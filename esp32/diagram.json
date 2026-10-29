@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "author": "SmartBus AI Team",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_entry",
+      "top": -90,
+      "left": -120,
+      "attrs": { "color": "green", "label": "Passenger Entry" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_exit",
+      "top": -90,
+      "left": 120,
+      "attrs": { "color": "red", "label": "Passenger Exit" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 160,
+      "left": -60,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "btn_entry:1.l", "black", [ "v0" ] ],
+    [ "esp:18", "btn_entry:2.l", "green", [ "v0" ] ],
+    [ "esp:GND.2", "btn_exit:1.l", "black", [ "v0" ] ],
+    [ "esp:19", "btn_exit:2.l", "red", [ "v0" ] ],
+    [ "esp:GND.1", "lcd:GND", "black", [ "v0" ] ],
+    [ "esp:5V", "lcd:VCC", "red", [ "v0" ] ],
+    [ "esp:21", "lcd:SDA", "blue", [ "v0" ] ],
+    [ "esp:22", "lcd:SCL", "yellow", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

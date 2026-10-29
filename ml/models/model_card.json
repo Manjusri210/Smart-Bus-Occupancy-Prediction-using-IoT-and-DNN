@@ -1,0 +1,36 @@
+{
+  "model_name": "SmartBus-DNN-v1",
+  "model_type": "keras",
+  "architecture": "Dense(64, ReLU) -> Dropout(0.1) -> Dense(32, ReLU) -> Dense(16, ReLU) -> Dense(1, Linear)",
+  "trained_at": "2026-10-29T02:56:18.389505+00:00",
+  "horizon_minutes": 5,
+  "data_source": "synthetic",
+  "total_observations": 2682,
+  "train_samples": 1877,
+  "val_samples": 402,
+  "test_samples": 403,
+  "features": [
+    "time_s",
+    "entries",
+    "exits",
+    "passengers",
+    "occupancy_pct",
+    "rolling_mean_3",
+    "net_rate"
+  ],
+  "target": "passengers_t+5min",
+  "metrics": {
+    "dnn_mae": 1.779,
+    "dnn_rmse": 2.312,
+    "dnn_r2": 0.876,
+    "baseline_mae": 1.963,
+    "baseline_rmse": 2.738,
+    "baseline_r2": 0.826
+  },
+  "limitations": [
+    "Trained for demonstration and educational purposes.",
+    "Predictions are physically clamped to [0, 40] passengers.",
+    "Clipping to bounds does not transform an uncertain forecast into a certified safety measurement.",
+    "Dataset source: synthetic. Real transit conditions with varying weather and schedule deviations require real fleet telemetry."
+  ]
+}
